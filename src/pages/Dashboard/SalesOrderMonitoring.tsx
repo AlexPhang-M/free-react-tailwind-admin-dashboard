@@ -277,7 +277,7 @@ export default function SalesOrderMonitoring() {
               <option value="">All statuses</option>
               {(meta.facets?.statuses ?? []).map((item) => (
                 <option key={item.value} value={item.value}>
-                  {item.value} ({item.count})
+                  {item.value}
                 </option>
               ))}
             </select>
@@ -291,7 +291,7 @@ export default function SalesOrderMonitoring() {
               <option value="">All sites</option>
               {(meta.facets?.sites ?? []).map((item) => (
                 <option key={item.value} value={item.value}>
-                  {item.value} ({item.count})
+                  {item.value}
                 </option>
               ))}
             </select>
