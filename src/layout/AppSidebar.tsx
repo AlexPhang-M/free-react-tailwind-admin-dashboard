@@ -16,7 +16,7 @@ import {
   UserCircleIcon,
 } from "../icons";
 import { cn } from "../utils";
-import SidebarWidget from "./SidebarWidget";
+// import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
   name: string;
@@ -40,86 +40,86 @@ const navItems: NavItem[] = [
     icon: <GridIcon fontSize={24} />,
     name: "Dashboard",
     key: "dashboard",
-    subItems: [{ name: "Ecommerce", key: "ecommerceHome", path: "/" }],
+    subItems: [{ name: "Sales Orders", path: "/" }],
   },
-  {
-    icon: <CalenderIcon fontSize={24} />,
-    name: "Calendar",
-    key: "calendar",
-    path: "/calendar",
-  },
-  {
-    icon: <UserCircleIcon fontSize={24} />,
-    name: "User Profile",
-    key: "userProfile",
-    path: "/profile",
-  },
-  {
-    name: "Forms",
-    key: "forms",
-    icon: <ListIcon fontSize={24} />,
-    subItems: [
-      {
-        name: "Form Elements",
-        key: "formElements",
-        path: "/form-elements",
-        pro: false,
-      },
-    ],
-  },
-  {
-    name: "Tables",
-    key: "tables",
-    icon: <TableIcon fontSize={24} />,
-    subItems: [
-      {
-        name: "Basic Tables",
-        key: "basicTables",
-        path: "/basic-tables",
-        pro: false,
-      },
-    ],
-  },
-  {
-    name: "Pages",
-    key: "pages",
-    icon: <PageIcon fontSize={24} />,
-    subItems: [{ name: "Blank Page", key: "blankPage", path: "/blank" }],
-  },
+  // {
+  //   icon: <CalenderIcon fontSize={24} />,
+  //   name: "Calendar",
+  //   key: "calendar",
+  //   path: "/calendar",
+  // },
+  // {
+  //   icon: <UserCircleIcon fontSize={24} />,
+  //   name: "User Profile",
+  //   key: "userProfile",
+  //   path: "/profile",
+  // },
+  // {
+  //   name: "Forms",
+  //   key: "forms",
+  //   icon: <ListIcon fontSize={24} />,
+  //   subItems: [
+  //     {
+  //       name: "Form Elements",
+  //       key: "formElements",
+  //       path: "/form-elements",
+  //       pro: false,
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Tables",
+  //   key: "tables",
+  //   icon: <TableIcon fontSize={24} />,
+  //   subItems: [
+  //     {
+  //       name: "Basic Tables",
+  //       key: "basicTables",
+  //       path: "/basic-tables",
+  //       pro: false,
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Pages",
+  //   key: "pages",
+  //   icon: <PageIcon fontSize={24} />,
+  //   subItems: [{ name: "Blank Page", key: "blankPage", path: "/blank" }],
+  // },
 ];
 
 const othersItems: NavItem[] = [
-  {
-    icon: <PieChartIcon fontSize={24} />,
-    name: "Charts",
-    key: "charts",
-    subItems: [
-      { name: "Line Chart", key: "lineChart", path: "/line-chart" },
-      { name: "Bar Chart", key: "barChart", path: "/bar-chart" },
-    ],
-  },
-  {
-    icon: <BoxCubeIcon fontSize={24} />,
-    name: "UI Elements",
-    key: "uiElements",
-    subItems: [
-      { name: "Alerts", key: "alerts", path: "/alerts", pro: false },
-      { name: "Avatar", key: "avatar", path: "/avatars", pro: false },
-      { name: "Badge", key: "badge", path: "/badge", pro: false },
-      { name: "Buttons", key: "buttons", path: "/buttons", pro: false },
-      { name: "Images", key: "images", path: "/images", pro: false },
-      { name: "Videos", key: "videos", path: "/videos", pro: false },
-    ],
-  },
-  {
-    icon: <PlugInIcon fontSize={24} />,
-    name: "Authentication",
-    key: "authentication",
-    subItems: [
-      { name: "Sign In", key: "signIn", path: "/signin", pro: false },
-      { name: "Sign Up", key: "signUp", path: "/signup", pro: false },
-    ],
-  },
+  // {
+  //   icon: <PieChartIcon fontSize={24} />,
+  //   name: "Charts",
+  //   key: "charts",
+  //   subItems: [
+  //     { name: "Line Chart", key: "lineChart", path: "/line-chart" },
+  //     { name: "Bar Chart", key: "barChart", path: "/bar-chart" },
+  //   ],
+  // },
+  // {
+  //   icon: <BoxCubeIcon fontSize={24} />,
+  //   name: "UI Elements",
+  //   key: "uiElements",
+  //   subItems: [
+  //     { name: "Alerts", key: "alerts", path: "/alerts", pro: false },
+  //     { name: "Avatar", key: "avatar", path: "/avatars", pro: false },
+  //     { name: "Badge", key: "badge", path: "/badge", pro: false },
+  //     { name: "Buttons", key: "buttons", path: "/buttons", pro: false },
+  //     { name: "Images", key: "images", path: "/images", pro: false },
+  //     { name: "Videos", key: "videos", path: "/videos", pro: false },
+  //   ],
+  // },
+  // {
+  //   icon: <PlugInIcon fontSize={24} />,
+  //   name: "Authentication",
+  //   key: "authentication",
+  //   subItems: [
+  //     { name: "Sign In", key: "signIn", path: "/signin", pro: false },
+  //     { name: "Sign Up", key: "signUp", path: "/signup", pro: false },
+  //   ],
+  // },
 ];
 
 const AppSidebar: React.FC = () => {
@@ -363,7 +363,7 @@ const AppSidebar: React.FC = () => {
           !isExpanded && !isHovered ? "xl:justify-center" : "justify-start",
         )}
       >
-        <Link to="/">
+        {/* <Link to="/">
           {isExpanded || isHovered || isMobileOpen ? (
             <>
               <img
@@ -389,6 +389,13 @@ const AppSidebar: React.FC = () => {
               height={32}
             />
           )}
+        </Link> */}
+
+        <Link
+          to="/"
+          className="text-xl font-bold text-brand-500"
+        >
+          Sales
         </Link>
       </div>
 
@@ -412,7 +419,7 @@ const AppSidebar: React.FC = () => {
               {renderMenuItems(navItems, "main")}
             </div>
 
-            <div>
+            {/* <div>
               <h2
                 className={`mb-4 flex text-xs leading-5 text-gray-400 uppercase ${
                   !isExpanded && !isHovered
@@ -426,12 +433,12 @@ const AppSidebar: React.FC = () => {
                   <HorizontaLDots className="size-6" />
                 )}
               </h2>
-              {renderMenuItems(othersItems, "others")}
-            </div>
+              {/* {renderMenuItems(othersItems, "others")}
+            </div> */}
           </div>
         </nav>
 
-        {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}
+        {/* {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null} */}
       </div>
     </aside>
   );

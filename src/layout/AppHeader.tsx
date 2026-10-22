@@ -122,7 +122,7 @@ const AppHeader: React.FC = () => {
             </svg>
           </button>
 
-          <div className="hidden xl:block">
+          {/* <div className="hidden xl:block">
             <form>
               <div className="relative">
                 <span className="pointer-events-none absolute inset-s-4 top-1/2 -translate-y-1/2">
@@ -154,7 +154,7 @@ const AppHeader: React.FC = () => {
                 </button>
               </div>
             </form>
-          </div>
+          </div> */}
         </div>
         <div
           className={cn(

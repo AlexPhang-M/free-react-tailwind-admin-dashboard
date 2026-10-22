@@ -1,227 +1,159 @@
-# TailAdmin React - Free React Tailwind Admin Dashboard Template
+# Sales Order Monitoring Dashboard
 
-TailAdmin is a free and open-source admin dashboard template built on **React and Tailwind CSS**, providing developers
-with everything they need to create a comprehensive, data-driven back-end,
-dashboard, or admin panel solution for upcoming web projects.
+A responsive web dashboard developed as part of the IT Executive assessment. The application connects to a mock Sales Orders API to display sales order summaries and records, with search, filtering, and pagination features.
 
-With TailAdmin, you get access to all the necessary dashboard UI components, elements, and pages required to build a
-feature-rich and complete dashboard or admin panel. Whether you're building dashboard or admin panel for a complex web
-application or a simple website, TailAdmin is the perfect solution to help you get up and running quickly.
+## Features
 
-![TailAdmin React.js Dashboard Preview](./banner.png)
+- **Sales order summary:** Displays total orders, open orders, invoiced orders, delivered orders, cancelled orders, and total order value.
+- **Search:** Search sales orders using supported order and customer-related fields.
+- **Filtering:** Filter sales orders by order status and site.
+- **Pagination:** Navigate between result pages and select the number of rows displayed per page (10, 25, 50, or 100).
+- **Loading state:** Provides feedback while data is being retrieved.
+- **Empty state:** Displays feedback when no records match the selected search or filters.
+- **Error handling:** Shows an error message and provides a retry option when a request fails.
+- **Responsive layout:** Uses a responsive layout for desktop and mobile screens.
+- **Read-only integration:** Retrieves data from the provided mock API without modifying sales order records.
 
-## Overview
+## Technology Stack
 
-TailAdmin provides essential UI components and layouts for building feature-rich, data-driven admin dashboards and
-control panels. It's built on:
-
-- React 19
+- React
 - TypeScript
-- Tailwind CSS v4
+- Vite
+- Tailwind CSS
+- TailAdmin React Dashboard
+- Fetch API
+- REST API
 
-### Quick Links
-
-- [✨ Visit Website](https://tailadmin.com)
-- [📄 Documentation](https://tailadmin.com/docs)
-- [⬇️ Download](https://tailadmin.com/download)
-- [🖌️ Figma Design File (Community Edition)](https://www.figma.com/community/file/1214477970819985778)
-- [⚡ Get PRO Version](https://tailadmin.com/pricing)
-
-### Demos
-
-- [Free Version](https://free-react-demo.tailadmin.com/)
-- [Pro Version](https://react-demo.tailadmin.com)
-
-### Other Versions
-
-- [HTML Version](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
-- [Next.js Version](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
-- [Vue.js Version](https://github.com/TailAdmin/vue-tailwind-admin-dashboard)
-- [Angular Version](https://github.com/TailAdmin/free-angular-tailwind-dashboard)
-- [Laravel Version](https://github.com/TailAdmin/tailadmin-laravel)
-
-## Installation
+## Getting Started
 
 ### Prerequisites
 
-To get started with TailAdmin, ensure you have the following prerequisites installed and set up:
+Make sure the following are installed:
 
-- Node.js 20.x or later
+- Node.js (a version compatible with the project's dependencies)
+- npm
+- Git (optional, for cloning the repository)
 
-### Cloning the Repository
+### Installation
 
-Clone the repository using the following command:
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/AlexPhang-M/free-react-tailwind-admin-dashboard
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd free-react-tailwind-admin-dashboard
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open the local URL displayed in the terminal, usually `http://localhost:5173`.
+
+### Production Build
+
+To create a production build, run:
 
 ```bash
-git clone https://github.com/TailAdmin/free-react-tailwind-admin-dashboard.git
+npm run build
 ```
 
-> Windows Users: place the repository near the root of your drive if you face issues while cloning.
+The generated production files are normally placed in the `dist` directory.
 
-1. Install dependencies:
+## API Integration
 
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+The dashboard retrieves sales order data from the assessment's mock API.
 
-2. Start the development server:
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    ```
+**API endpoint**
 
-## Components
+```text
+https://hiring.harrisons.my/api/mock/sales-orders
+```
 
-TailAdmin is a pre-designed starting point for building a web-based dashboard using React.js and Tailwind CSS. The
-template includes:
+**Authentication**
 
-- Sophisticated and accessible sidebar
-- Data visualization components
-- Prebuilt profile management and 404 page
-- Tables and Charts(Line and Bar)
-- Authentication forms and input elements
-- Alerts, Dropdowns, Modals, Buttons and more
-- FAQ & Accordion, Testimonials, and Carousels
-- Can't forget Dark Mode 🕶️
+Requests use the assessment API key through the `x-assessment-key` HTTP header. The key is configured in the API service file.
 
-All components are built with React and styled using Tailwind CSS for easy customization.
+**Supported query parameters**
 
-## Feature Comparison
+| Parameter | Purpose |
+|---|---|
+| `page` | Selects the result page |
+| `pageSize` | Controls the number of records returned per page |
+| `q` | Searches supported sales order and customer fields |
+| `status` | Filters records by sales order status |
+| `site` | Filters records by site |
+| `sort` | Specifies the sort field, where supported |
+| `order` | Specifies the sort direction, where supported |
 
-### Free Version
+The dashboard uses the API response for its summary metrics, filtered records, and pagination information rather than relying on hard-coded dashboard values.
 
-- 1 Unique Dashboard
-- 35+ dashboard components
-- 50+ UI elements
-- Basic Figma design files
-- Community support
+The API metadata endpoint (`/meta`) is also used to retrieve available filter options.
 
-### Pro Version
+## Project Structure
 
-- 7 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM, SaaS, Stocks, Logistics (more coming soon)
-- 500+ dashboard components and UI elements
-- Complete Figma design file
-- Email support
+The main application files are organised as follows:
 
-To learn more about pro version features and pricing, visit our [pricing page](https://tailadmin.com/pricing).
+```text
+src/
+├── layout/
+│   └── AppSidebar.tsx
+├── pages/
+│   └── Dashboard/
+│       └── SalesOrderMonitoring.tsx
+├── services/
+│   └── salesOrdersApi.ts
+├── App.tsx
+└── main.tsx
+```
 
-## Changelog
+- `SalesOrderMonitoring.tsx` — Renders the dashboard, summary metrics, search and filter controls, sales orders table, and pagination.
+- `salesOrdersApi.ts` — Handles API requests, query parameters, and TypeScript response types.
+- `App.tsx` — Configures application routes.
+- `AppSidebar.tsx` — Configures the sidebar navigation.
 
-### Version 2.4.0 - [September 13, 2026]
+## Error Handling and Limitations
 
-- Added Internationalization (Multi Language) support.
-- Updated complete template styles to support RTL.
-- Added Yearly View into calendar page.
-- Updated `maplibre-gl` implementation with `react-map-gl`.
-- Replaced `@react-jvectormap` with `jsvectormap`.
-- Added new requested components and fixed noted accessibility issues.
-- Updated project structure and component compositions for easy adaption.
-- Added AGENTS.md to easily work with AI Agents.
-- Updated all the packages and libraries to the latest versions. Also removed unused packages.
+- Data availability depends on the assessment API.
+- Network failures and unsuccessful API responses are handled by the dashboard's error state.
+- Search and filtering depend on the fields and options supported by the API.
+- The application is intended for the provided assessment API and is not a production sales management system.
+- The assessment API key is used by the frontend. Because frontend code can be inspected by users, this approach should only be used with credentials intended for client-side assessment use. Production secrets should be kept on a backend server.
 
-### Version 2.3.1 - [May 23, 2026]
+## Architecture Overview
 
-- Added AI Settings page to configure models, keys, and token limits.
-- Added Maps page with MapLibre GL, Leaflet, and iframe styles.
-- Added Vector Maps page powered by AmCharts 5 geodata (World & USA).
-- Added Radar Charts page with 3 unique formats.
-- Added Radial Progress Charts page featuring 4 custom layout templates.
-- Introduced new Bar Charts Five & Six and Pie Charts Four & Five.
+1. The user opens the dashboard.
+2. The React application requests sales order data from the mock API.
+3. The API service passes search, filter, and pagination parameters to the endpoint.
+4. The API returns summary information, matching records, and pagination metadata.
+5. The dashboard renders the results and updates them when the user changes search terms, filters, or page settings.
 
-### Version 2.3.0 - [April 28, 2026]
+## Testing
 
-- Added **AI Dashboard** with token usage and revenue tracking.
-- Added **Sales Dashboard** with retention and multi-channel analytics.
-- Added **Finance Dashboard** with cashflow and balance management.
-- Introduced **6 New Layout variations** for improved UI flexibility.
-- Integrated **Advanced Data Visualization** with 7+ new chart types.
+The following behaviours should be verified before submission:
 
-### Version 2.1.0 - [Dec 30, 2025]
+- Summary metrics match the API response.
+- Search returns the expected matching records.
+- Site and status filters work individually and together.
+- Changing the page size resets pagination appropriately.
+- Previous and Next navigation respect page boundaries.
+- Loading, empty, and error states display correctly.
+- The Retry button triggers another request.
+- The dashboard remains usable on desktop and mobile screen sizes.
+- The production build completes successfully.
 
-- Resolved Date Picker positioning and input issues in Charts.
+## AI Assistance Disclosure
 
-### Version 2.0.2 - [March 25, 2025]
-
-- Upgraded to React 19
-- Included overrides for packages to prevent peer dependency errors.
-- Migrated from react-flatpickr to flatpickr package for React 19 support
-
-### Version 2.0.1 - [February 27, 2025]
-
-#### Update Overview
-
-- Upgraded to Tailwind CSS v4 for better performance and efficiency.
-- Updated class usage to match the latest syntax and features.
-- Replaced deprecated class and optimized styles.
-
-#### Next Steps
-
-- Run npm install or yarn install to update dependencies.
-- Check for any style changes or compatibility issues.
-- Refer to the Tailwind CSS v4 [Migration Guide](https://tailwindcss.com/docs/upgrade-guide) on this release. if needed.
-- This update keeps the project up to date with the latest Tailwind improvements. 🚀
-
-### Version 2.0.0 - [February 2025]
-
-A major update with comprehensive redesign and modern React patterns implementation.
-
-#### Major Improvements
-
-- Complete UI redesign with modern React patterns
-- New features: collapsible sidebar, chat, and calendar
-- Improved performance and accessibility
-- Updated data visualization using ApexCharts
-
-#### Key Features
-
-- Redesigned dashboards (Ecommerce, Analytics, Marketing, CRM)
-- Enhanced navigation with React Router integration
-- Advanced tables with sorting and filtering
-- Calendar with drag-and-drop support
-- New UI components and improved existing ones
-
-#### Breaking Changes
-
-- Updated sidebar component API
-- Migrated charts to ApexCharts
-- Revised authentication system
-
-[Read more](https://tailadmin.com/docs/update-logs/react) on this release.
-
-### Version 1.3.7 - [June 20, 2024]
-
-#### Enhancements
-
-1. Remove Repetition of DefaultLayout in every Pages
-2. Add ClickOutside Component for reduce repeated functionality in Header Message, Notification and User Dropdowns.
-
-### Version 1.3.6 - [Jan 31, 2024]
-
-#### Enhancements
-
-1. Integrate flatpickr in [Date Picker/Form Elements]
-2. Change color after select an option [Select Element/Form Elements].
-3. Make it functional [Multiselect Dropdown/Form Elements].
-4. Make best value editable [Pricing Table One/Pricing Table].
-5. Rearrange Folder structure.
-
-### Version 1.2.0 - [Apr 28, 2023]
-
-- Add Typescript in TailAdmin React.
-
-### Version 1.0.0 - Initial Release - [Mar 13, 2023]
-
-- Initial release of TailAdmin React.
-
-## License
-
-TailAdmin React.js Free Version is released under the MIT License.
-
-## Support
-
-If you find this project helpful, please consider giving it a star on GitHub. Your support helps us continue developing
-and maintaining this template.
-
+AI tools were used to assist with implementation guidance, code troubleshooting, and documentation. The application was reviewed and tested by the developer, who remains responsible for the final implementation and submission.
