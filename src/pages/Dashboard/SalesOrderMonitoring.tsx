@@ -173,13 +173,6 @@ export default function SalesOrderMonitoring() {
     };
   }, [page, pageSize, search, status, site, reloadKey]);
 
-  const handlePageSizeChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-    setPageSize(Number(event.target.value));
-    setPage(1);
-};
-
   function changeStatus(value: string) {
     setStatus(value);
     setPage(1);
