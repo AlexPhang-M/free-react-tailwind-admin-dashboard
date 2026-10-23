@@ -84,7 +84,9 @@ function MetricCard({
 }) {
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03]">
-      <p className="text-sm text-gray-500 dark:text-gray-400">{title}</p>
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        {title}
+      </p>
       <p className="mt-3 text-2xl font-semibold text-gray-900 dark:text-white">
         {value}
       </p>
@@ -188,13 +190,14 @@ export default function SalesOrderMonitoring() {
     setSearch("");
     setStatus("");
     setSite("");
+    setPageSize(10);
     setPage(1);
   }
 
   return (
     <>
       <PageMeta
-        title="Sales Order Monitoring | Harrisons Sabah"
+        title="Sales Order Monitoring"
         description="Monitor sales orders, statuses and order values."
       />
 
